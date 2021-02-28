@@ -12,13 +12,21 @@ const chunk = require(`lodash/chunk`)
  * See https://www.gatsbyjs.com/docs/node-apis/#createPages for more info.
  */
 exports.createPages = async gatsbyUtilities => {
-  // Query our posts from the GraphQL server
-  const posts = await getPosts(gatsbyUtilities)
+  // Query our pages from the GraphQL server
+  const {
+    allPosts: {
+      posts
+    },
+    allWpPage: {
+      pages
+    },
+    allBios: {
+      bios
+    }
+  } = await getWpData(gatsbyUtilities)
 
-  // If there are no posts in WordPress, don't do anything
-  if (!posts.length) {
-    return
-  }
+  // Create non-blog pages
+  await createPages({ pages, gatsbyUtilities })
 
   // If there are posts, create pages for them
   await createIndividualBlogPostPages({ posts, gatsbyUtilities })
@@ -26,6 +34,21 @@ exports.createPages = async gatsbyUtilities => {
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
 }
+
+const createPages = async ({ pages, gatsbyUtilities }) =>
+  Promise.all(
+    pages.map(({ page }) => {
+      if (!page.isPostsPage) {
+        gatsbyUtilities.actions.createPage({
+          path: page.uri,
+          component: path.resolve(`./src/templates/page.js`),
+          context: {
+            id: page.id,
+          }
+        })
+      }
+    })
+  )
 
 /**
  * This function creates all the individual blog pages in this site
@@ -88,7 +111,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
           // we want the first page to be "/" and any additional pages
           // to be numbered.
           // "/blog/2" for example
-          return page === 1 ? `/` : `/blog/${page}`
+          return page === 1 ? `/blog` : `/blog/${page}`
         }
 
         return null
@@ -129,24 +152,39 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
  * We're passing in the utilities we got from createPages.
  * So see https://www.gatsbyjs.com/docs/node-apis/#createPages for more info!
  */
-async function getPosts({ graphql, reporter }) {
+async function getWpData({ graphql, reporter }) {
   const graphqlResult = await graphql(/* GraphQL */ `
-    query WpPosts {
+    query WpData {
       # Query all WordPress blog posts sorted by date
-      allWpPost(sort: { fields: [date], order: DESC }) {
-        edges {
+      allPosts: allWpPost(sort: {fields: [date], order: DESC}, filter: {categories: {nodes: {elemMatch: {name: {eq: "Blog"}}}}}) {
+        posts: edges {
           previous {
             id
           }
-
-          # note: this is a GraphQL alias. It renames "node" to "post" for this query
-          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
           post: node {
             id
             uri
           }
-
           next {
+            id
+          }
+        }
+      }
+      # Query all WordPress pages
+      allWpPage {
+        pages: edges {
+          page: node {
+            id
+            uri
+            isPostsPage
+            isFrontPage
+          }
+        }
+      }
+      # Query all Team Bios
+      allBios: allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "Bio"}}}}}) {
+        bios: edges {
+          bio: node {
             id
           }
         }
@@ -162,5 +200,5 @@ async function getPosts({ graphql, reporter }) {
     return
   }
 
-  return graphqlResult.data.allWpPost.edges
+  return graphqlResult.data
 }

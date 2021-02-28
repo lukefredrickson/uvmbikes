@@ -1,10 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
-
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Hero from "../components/hero"
 
 const BlogIndex = ({
   data,
@@ -14,22 +13,19 @@ const BlogIndex = ({
 
   if (!posts.length) {
     return (
-      <Layout isHomePage>
-        <SEO title="All posts" />
-        <Bio />
+      <Layout>
+        <SEO title="Blog" />
         <p>
-          No blog posts found. Add posts to your WordPress site and they'll
-          appear here!
+          Uh Oh! No blog posts found.
         </p>
       </Layout>
     )
   }
 
   return (
-    <Layout isHomePage>
-      <SEO title="All posts" />
-
-      <Bio />
+    <Layout>
+      <Hero title='Blog'/>
+      <SEO title="Blog" />
 
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
@@ -74,6 +70,7 @@ export const pageQuery = graphql`
   query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
     allWpPost(
       sort: { fields: [date], order: DESC }
+      filter: {categories: {nodes: {elemMatch: {name: {eq: "Blog"}}}}}
       limit: $postsPerPage
       skip: $offset
     ) {

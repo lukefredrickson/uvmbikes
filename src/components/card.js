@@ -3,8 +3,6 @@ import Image from "gatsby-image"
 import { Link } from "gatsby"
 
 const Card = ({ header, body, image, link }) => {
-  console.log(header)
-  console.log(body)
   return (
     <div>
       {image?.fluid && (

@@ -28,6 +28,9 @@ exports.createPages = async gatsbyUtilities => {
   // Create non-blog pages
   await createPages({ pages, gatsbyUtilities })
 
+  // Create team bios pages
+  await createBios({ bios, gatsbyUtilities })
+
   // If there are posts, create pages for them
   await createIndividualBlogPostPages({ posts, gatsbyUtilities })
 
@@ -47,6 +50,19 @@ const createPages = async ({ pages, gatsbyUtilities }) =>
           }
         })
       }
+    })
+  )
+
+const createBios = async ({ bios, gatsbyUtilities }) =>
+  Promise.all(
+    bios.map(({ bio }) => {
+      gatsbyUtilities.actions.createPage({
+        path: `/about/${bio.slug}`,
+        component: path.resolve(`./src/templates/bio.js`),
+        context: {
+          id: bio.id,
+        }
+      })
     })
   )
 
@@ -186,6 +202,7 @@ async function getWpData({ graphql, reporter }) {
         bios: edges {
           bio: node {
             id
+            slug
           }
         }
       }

@@ -13,6 +13,8 @@ module.exports = {
         'bg-pink-400',
         'text-right',
         'text-left',
+        '.has-text-align-right',
+        '.has-text-align-left',
       ],
     }
   },

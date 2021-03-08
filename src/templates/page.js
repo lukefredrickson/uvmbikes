@@ -19,17 +19,17 @@ const PageTemplate = ({ data: { page } }) => {
       
 
       <article
-        className="page"
+        className="max-w-6xl"
         itemScope
         itemType="http://schema.org/Article"
       >
         {!!page.content && (
           <section itemProp="articleBody">
             {content}
-            {isAbout ? <TeamCards/> : ''}
           </section>
         )}
       </article>
+      {isAbout ? <TeamCards/> : ''}
       {isVolunteer &&
         <div className="flex justify-center items-center bg-repeat bg-center bg-texture w-full h-60 my-10 bg-red-400">
           <div className="transform-gpu transition-transform ease-in-out hover:-translate-y-0.5">

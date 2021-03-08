@@ -18,14 +18,15 @@ const BlogPostTemplate = ({
   return (
     <Layout headerInfo={blogPage.hero} pageId={blogPage.id}>
       <SEO title={post.title} description={post.excerpt} />
-      <Link className="text-2xl mb-10" to={blogPage.uri}>
-        ← <span className="underline">{blogPage.slug}</span>
-      </Link>
+      
       <article
-        className="blog-post"
+        className="max-w-6xl"
         itemScope
         itemType="http://schema.org/Article"
       >
+        <Link className="text-2xl mb-10" to={blogPage.uri}>
+          ← <span className="underline">{blogPage.slug}</span>
+        </Link>
         <header>
           <h1 itemProp="headline">{parse(post.title)}</h1>
 

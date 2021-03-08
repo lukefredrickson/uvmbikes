@@ -5,13 +5,16 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+
+  const headerInfo = {
+    header: "404: Not Found",
+    subtitle: "Uh oh! You're trying to reach a page that doesn't exist",
+    backgroundcolor: "bg-pink-400",
+  }
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout headerInfo={headerInfo} pageId={"404"} >
       <SEO title="404: Not Found" />
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
     </Layout>
   )
 }

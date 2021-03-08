@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Nav = ({ pageId }) => {
@@ -38,12 +38,14 @@ const Nav = ({ pageId }) => {
     }
   `)
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
   const navItems = items.map((item) => {
     let isCurrentPage = item.connectedNode.node.id === pageId;
     return (
       <Link to={item.connectedNode.node.uri} key={item.order}
-        className={"bg-gray-900 px-3 py-1 text-2xl font-display font-regular "
+        className={"hover:bg-gray-800 px-3 py-1 text-2xl font-display font-normal "
             .concat(isCurrentPage ? "text-yellow-400" : "text-white")
         }>
           {item.label}
@@ -53,11 +55,18 @@ const Nav = ({ pageId }) => {
     
     
 
-  const mobileNavItems = items.map((item) =>
-    <Link to={item.connectedNode.node.uri} key={item.order}
-    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-      {item.label}
-    </Link>
+  const mobileNavItems = items.map((item) => {
+
+    let isCurrentPage = item.connectedNode.node.id === pageId;
+    return (
+      <Link to={item.connectedNode.node.uri} key={item.order}
+        className={"hover:bg-gray-800 block px-3 py-2 text-2xl font-normal font-display "
+          .concat(isCurrentPage ? "text-yellow-400 bg-gray-800" : "text-white")}>
+        {item.label}
+      </Link>
+    )
+  }
+    
   )
 
   return (
@@ -73,8 +82,8 @@ const Nav = ({ pageId }) => {
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
-            <button type="button"
-                    className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            <button type="button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="bg-gray-800 inline-flex items-center justify-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
                     aria-controls="mobile-menu" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
               <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -90,7 +99,7 @@ const Nav = ({ pageId }) => {
         </div>
       </div>
 
-      <div className="md:hidden" id="mobile-menu">
+      <div className={`${!mobileMenuOpen && "hidden"} md:hidden`} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {mobileNavItems}
         </div>

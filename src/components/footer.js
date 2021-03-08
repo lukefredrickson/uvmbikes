@@ -87,7 +87,7 @@ const Footer = ({ footerInfo }) => {
                 </div>
             </div>
             <div className="w-full bg-cogs bg-gray-500 flex justify-center items-center py-10">
-                <StaticImage src="../img/favicon.png" width="300" aspectRatio="1"/>
+                <StaticImage src="../img/favicon.png" width={300} aspectRatio={1} alt="UVM Bikes! Logo"/>
             </div>
             <div className="flex flex-col justify-center items-center w-full bg-gray-900 h-40 font-light">
                 <span>© {new Date().getFullYear()} UVM Bikes!</span>

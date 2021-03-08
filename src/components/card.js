@@ -6,7 +6,7 @@ const Card = ({ header, body, image, link }) => {
   
   return (
     <div className="transform-gpu transition-transform ease-in-out hover:-translate-y-0.5 max-w-sm bg-repeat bg-center bg-texture 
-    bg-gray-900 text-white border-2 border-black shadow-lg overflow-hidden m-6 pb-4">
+    bg-gray-900 text-white border-2 border-black shadow-lg overflow-hidden m-4 pb-4">
       <Link to={link}>
     {image?.fluid && (
           <GatsbyImage

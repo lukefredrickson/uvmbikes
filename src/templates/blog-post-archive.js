@@ -24,43 +24,45 @@ const BlogIndex = ({
   return (
     <Layout headerInfo={blogPage.hero} pageId={blogPage.id}>
       <SEO title={blogPage.title} />
+      <div className="max-w-6xl">
+        <h1 className="mb-10 text-4xl">Recent Posts</h1>
 
-      <h1 className="mb-10 text-4xl">Recent Posts</h1>
+        <div className="flex flex-col space-y-8">
+          {posts.map(post => {
+            const title = post.title
 
-      <div className="flex flex-col space-y-8">
-        {posts.map(post => {
-          const title = post.title
-
-          return (
-            <Link to={post.uri} itemProp="url">
-              <article
-                key={post.uri}
-                className="border-2 border-black bg-gray-900 bg-repeat bg-center bg-texture text-gray-50 shadow-lg px-6 py-4 transform-gpu transition-transform ease-in-out hover:-translate-y-0.5"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>{parse(title)}</h2>
-                  <small>{post.date}</small>
-                </header>
-                <section itemProp="description">{parse(post.excerpt)}</section>
-              </article>
+            return (
+              <Link to={post.uri} key={post.uri} itemProp="url">
+                <article
+                  className="border-2 border-black bg-gray-900 bg-repeat bg-center bg-texture text-gray-50 shadow-lg px-6 py-4 transform-gpu transition-transform ease-in-out hover:-translate-y-0.5"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>{parse(title)}</h2>
+                    <small>{post.date}</small>
+                  </header>
+                  <section itemProp="description">{parse(post.excerpt)}</section>
+                </article>
+              </Link>
+            )
+          })}
+        </div>
+        <div className="flex flex-row space-x-6 py-10">
+          {previousPagePath && (
+            <Link to={previousPagePath}>
+              ← <span className="underline">Previous</span>
             </Link>
-          )
-        })}
+          )}
+          {nextPagePath &&
+            <Link to={nextPagePath}>
+              <span className="underline">Next</span>  →
+            </Link>
+          }
+        </div>
       </div>
-      <div className="flex flex-row space-x-6 py-10">
-        {previousPagePath && (
-          <Link to={previousPagePath}>
-            ← <span className="underline">Previous</span>
-          </Link>
-        )}
-        {nextPagePath &&
-          <Link to={nextPagePath}>
-            <span className="underline">Next</span>  →
-          </Link>
-        }
-      </div>
+
+
     </Layout>
   )
 }

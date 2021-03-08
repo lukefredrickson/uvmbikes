@@ -11,6 +11,8 @@ module.exports = {
         'bg-purple-400',
         'bg-red-400',
         'bg-pink-400',
+        'text-right',
+        'text-left',
       ],
     }
   },

@@ -1,57 +1,18 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
 
-const Header = () => {
-  const {
-    wp: {
-      generalSettings: { title: siteTitle },
-    },
-    allWpMenu: {
-      nodes: [
-        {
-          menuItems: {
-            items
-          }
-        }
-      ]
-    }
-  } = useStaticQuery(graphql`
-    query LayoutQuery {
-      wp {
-        generalSettings {
-          title
-          description
-        }
-      }
-      allWpMenu(filter: {slug: {eq: "main"}}) {
-        nodes {
-          menuItems {
-            items: nodes {
-              url
-              label
-              order
-            }
-          }
-        }
-      }
-    }
-  `)
-
-
-  const navItems = items.map((item) =>
-    <li key={item.order}><Link to={item.url}>{item.label}</Link></li>
-  )
-
+const Header = ({ headerInfo }) => {
   return (
-    <header className="global-header">
-      {/* navbar */}
-      <div>
-        <Link to='/'>{siteTitle}</Link>
-        <nav>{navItems}</nav>
+    <header className={`bg-cogs bg-repeat bg-center ${headerInfo.backgroundcolor}`}>
+      <div className="flex flex-col justify-center max-w-7xl min-h-min mx-auto py-20 px-6 sm:px-10 md:px-16 lg:px-20">
+        <h1 className="bg-gray-900 bg-repeat bg-center bg-texture text-gray-50 text-4xl sm:text-6xl min-w-sm max-w-md p-6 m-0 shadow-lg">
+          {headerInfo.header}
+        </h1>
+        <h4 className="bg-gray-900 bg-repeat bg-center bg-texture text-gray-50 min-w-sm max-w-md p-6 shadow-lg font-sans font-normal">
+          {headerInfo.subtitle}
+        </h4>
       </div>
     </header>
   );
-
 }
 
 export default Header

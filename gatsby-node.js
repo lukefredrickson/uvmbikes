@@ -25,17 +25,20 @@ exports.createPages = async gatsbyUtilities => {
     }
   } = await getWpData(gatsbyUtilities)
 
+  const  [ { page: blogPage } ] = pages.filter(({ page }) => page.isPostsPage);
+  const  [ { page: aboutPage } ] = pages.filter(({ page }) => page.slug === 'about');
+
   // Create non-blog pages
   await createPages({ pages, gatsbyUtilities })
 
   // Create team bios pages
-  await createBios({ bios, gatsbyUtilities })
+  await createBios({ aboutPage, bios, gatsbyUtilities })
 
   // If there are posts, create pages for them
-  await createIndividualBlogPostPages({ posts, gatsbyUtilities })
+  await createIndividualBlogPostPages({ blogPage, posts, gatsbyUtilities })
 
   // And a paginated archive
-  await createBlogPostArchive({ posts, gatsbyUtilities })
+  await createBlogPostArchive({ blogPage, posts, gatsbyUtilities })
 }
 
 const createPages = async ({ pages, gatsbyUtilities }) =>
@@ -53,7 +56,7 @@ const createPages = async ({ pages, gatsbyUtilities }) =>
     })
   )
 
-const createBios = async ({ bios, gatsbyUtilities }) =>
+const createBios = async ({ aboutPage, bios, gatsbyUtilities }) =>
   Promise.all(
     bios.map(({ bio }) => {
       gatsbyUtilities.actions.createPage({
@@ -61,6 +64,7 @@ const createBios = async ({ bios, gatsbyUtilities }) =>
         component: path.resolve(`./src/templates/bio.js`),
         context: {
           id: bio.id,
+          aboutPage,
         }
       })
     })
@@ -69,7 +73,7 @@ const createBios = async ({ bios, gatsbyUtilities }) =>
 /**
  * This function creates all the individual blog pages in this site
  */
-const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
+const createIndividualBlogPostPages = async ({ blogPage, posts, gatsbyUtilities }) =>
   Promise.all(
     posts.map(({ previous, post, next }) =>
       // createPage is an action passed to createPages
@@ -93,6 +97,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
           // We also use the next and previous id's to query them and add links!
           previousPostId: previous ? previous.id : null,
           nextPostId: next ? next.id : null,
+          blogPage,
         },
       })
     )
@@ -101,7 +106,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
 /**
  * This function creates all the individual blog pages in this site
  */
-async function createBlogPostArchive({ posts, gatsbyUtilities }) {
+async function createBlogPostArchive({ blogPage, posts, gatsbyUtilities }) {
   const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
     {
       wp {
@@ -154,6 +159,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 
           nextPagePath: getPagePath(pageNumber + 1),
           previousPagePath: getPagePath(pageNumber - 1),
+          blogPage,
         },
       })
     })
@@ -192,8 +198,14 @@ async function getWpData({ graphql, reporter }) {
           page: node {
             id
             uri
+            slug
             isPostsPage
             isFrontPage
+            hero {
+              header
+              subtitle
+              backgroundcolor
+            }
           }
         }
       }

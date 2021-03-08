@@ -1,84 +1,89 @@
 import React from "react"
-import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { graphql, Link } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image";
 import parse from "html-react-parser"
-
-// We're using Gutenberg so we need the block styles
-import "@wordpress/block-library/build-style/style.css"
-import "@wordpress/block-library/build-style/theme.css"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Hero from "../components/hero"
-import TeamCards from "../components/team-cards"
 
-const BioTemplate = ({ data: { bio } }) => {
+const BioTemplate = ({
+    data: { post },
+    pageContext: { aboutPage }
+  }) => {
   const featuredImage = {
-    fluid: bio.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: bio.featuredImage?.node?.alt || ``,
+    fluid: post?.bio?.portrait?.localFile?.childImageSharp?.gatsbyImageData,
+    alt: post.featuredImage?.node?.alt || ``,
   }
 
-  const contentFull = parse(bio.content);
+  const contentFull = parse(post.content);
   const content = contentFull.filter(i => i !== '\n' && i !== '\n\n\n\n' && i.type !== 'subtitle');
 
-  return (
-    <Layout pageId={bio.id}>
-      <Hero title={bio.title}/>
-      <SEO title={bio.title} />
+  const headerInfo = {
+      header: 'THE TEAM',
+      subtitle: post.bio.position,
+      backgroundcolor: aboutPage.hero.backgroundcolor,
+  }
 
+  return (
+    <Layout headerInfo={headerInfo} pageId={aboutPage.id}>
+      <SEO title={post.title} />
+      <Link className="text-2xl" to={aboutPage.uri}>
+        ← <span className="underline">{aboutPage.slug}</span>
+      </Link>
       <article
-        className="page"
+        className="flex flex-col items-start justify-start lg:flex-row lg:space-x-10"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
+        <header className="w-auto flex-none m-0 mt-10 border-black border-2 shadow-lg">
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
-            <Image
-              fluid={featuredImage.fluid}
+            <GatsbyImage
+              image={featuredImage.fluid}
               alt={featuredImage.alt}
-              style={{ marginBottom: 50 }}
             />
           )}
         </header>
 
-        {!!bio.content && (
+        {!!post.content && (
           <section itemProp="articleBody">
+            <h1 className="uppercase">{post.bio.name}</h1>
+            <h2 className="font-sans font-normal">{post.bio.position}</h2>
+            <hr></hr>
             {content}
           </section>
         )}
       </article>
     </Layout>
-  )
+  );
 }
 
 export default BioTemplate
 
-export const pageQuery = graphql`
-  query BioById(
-    # these variables are passed in via createPage.pageContext in gatsby-node.js
-    $id: String!
-  ) {
-    # selecting the current page by id
-    bio: wpPost(id: { eq: $id }) {
-      id
-      content
-      excerpt
-      title
-      slug
-
-      featuredImage {
-        node {
-          altText
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
+export const pageQuery = graphql`query BioById($id: String!) {
+  post: wpPost(id: {eq: $id}) {
+    id
+    content
+    excerpt
+    title
+    slug
+    bio {
+      name
+      position
+      portrait {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(
+              layout: CONSTRAINED
+              placeholder: TRACED_SVG
+              quality: 100
+              formats: AUTO
+              width: 400
+            )
           }
         }
       }
     }
   }
+}
 `

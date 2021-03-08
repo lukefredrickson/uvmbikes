@@ -20,8 +20,8 @@ const BioTemplate = ({
 
   const headerInfo = {
       header: 'THE TEAM',
-      subtitle: post.bio.position,
-      backgroundcolor: aboutPage.hero.backgroundcolor,
+      subtitle: `${post.bio.position} | ${post.bio.name}`,
+      backgroundcolor: 'blue',
   }
 
   return (

@@ -20,9 +20,15 @@ const BlogIndex = ({
       </Layout>
     )
   }
+  
+  const headerInfo = {
+    header: 'BLOG',
+    subtitle: 'Updates, news, & ramblings.',
+    backgroundcolor: 'purple',
+  }
 
   return (
-    <Layout headerInfo={blogPage.hero} pageId={blogPage.id}>
+    <Layout headerInfo={headerInfo} pageId={blogPage.id}>
       <SEO title={blogPage.title} />
       <div className="max-w-6xl">
         <h1 className="mb-10 text-4xl">Recent Posts</h1>

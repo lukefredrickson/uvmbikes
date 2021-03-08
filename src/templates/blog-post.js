@@ -14,9 +14,15 @@ const BlogPostTemplate = ({
     fluid: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.alt || ``,
   }
+  
+  const headerInfo = {
+    header: 'BLOG',
+    subtitle: 'Updates, news, & ramblings.',
+    backgroundcolor: 'purple',
+  }
 
   return (
-    <Layout headerInfo={blogPage.hero} pageId={blogPage.id}>
+    <Layout headerInfo={headerInfo} pageId={blogPage.id}>
       <SEO title={post.title} description={post.excerpt} />
       
       <article

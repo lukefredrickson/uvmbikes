@@ -1,7 +1,19 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: {
+    content: ['./src/**/*.{js,jsx,ts,tsx}'],
+    options: {
+      safelist: [
+        'bg-yellow-400',
+        'bg-green-400',
+        'bg-blue-400',
+        'bg-purple-400',
+        'bg-red-400',
+        'bg-pink-400',
+      ],
+    }
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {

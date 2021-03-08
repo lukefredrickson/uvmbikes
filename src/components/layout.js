@@ -17,7 +17,7 @@ const Layout = ({ children , headerInfo, pageId }) => {
         link="https://www.givecampus.com/schools/UniversityofVermont/luvmyclub-2021"
       />
       <Header headerInfo={headerInfo}/>
-      {pageId != "404" &&
+      {pageId !== "404" &&
       <main>
         <div className="flex flex-col items-center mx-auto my-20 px-4 sm:px-6 lg:px-8">
           {children}

@@ -1,8 +1,10 @@
 import React, { useState } from "react"
+import { Link } from "gatsby"
 
-const Banner = ({ largeText, smallText, buttonText, link }) => {
+const Banner = ({ largeText, smallText, buttonText, link, internalLink }) => {
 
     const [hidden, setHidden] = useState(false);
+    const linkStyle = "flex items-center justify-center px-4 py-2 border bg-texture-white border-black shadow text-sm font-medium text-black bg-white hover:bg-indigo-50";
 
     return (
         <div className={`${hidden && "hidden"} bg-blue-600 border-b-4 border-gray-900`}>
@@ -24,9 +26,16 @@ const Banner = ({ largeText, smallText, buttonText, link }) => {
                         </p>
                     </div>
                     <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-                        <a href={link} className="flex items-center justify-center px-4 py-2 border bg-texture-white border-black shadow text-sm font-medium text-black bg-white hover:bg-indigo-50">
-                            {buttonText}
-                        </a>
+                        {internalLink ?
+                            <Link to={internalLink} className={linkStyle}>
+                                {buttonText}
+                            </Link>
+                            :
+                            link &&
+                            <a href={link} target="_blank" className={linkStyle}>
+                                {buttonText}
+                            </a>
+                        }
                     </div>
                     <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
                         <button type="button" onClick={() => setHidden(true)}

@@ -33,37 +33,38 @@ const BlogPostTemplate = ({
         <Link className="text-2xl mb-10" to={blogPage.uri}>
           ← <span className="underline">{blogPage.slug}</span>
         </Link>
-        <header>
+        <header className="my-10">
+          {/* if we have a featured image for this post let's display it */}
+          {featuredImage?.fluid && (
+            <GatsbyImage
+              className="border-2 border-black shadow-lg"
+              image={featuredImage.fluid}
+              alt={featuredImage.alt}/>
+          )}
           <h1 itemProp="headline">{parse(post.title)}</h1>
 
           <p>{post.date}</p>
 
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.fluid && (
-            <GatsbyImage
-              image={featuredImage.gatsbyImageData}
-              alt={featuredImage.alt}
-              style={{ marginBottom: 50 }} />
-          )}
+          
         </header>
 
         {!!post.content && (
           <section itemProp="articleBody">{parse(post.content)}</section>
         )}
-      </article>
 
-      <nav className="py-10 flex w-full justify-between">
-            {previous && (
-              <Link className="mr-auto" to={previous.uri} rel="prev">
-                ← <span className="underline">{parse(previous.title)}</span>
-              </Link>
-            )}
-            {next && (
-              <Link className="ml-auto" to={next.uri} rel="next">
-                <span className="underline">{parse(next.title)}</span> →
-              </Link>
-            )}
-      </nav>
+        <nav className="py-10 flex w-full justify-between">
+              {previous && (
+                <Link className="mr-auto" to={previous.uri} rel="prev">
+                  ← <span className="underline">{parse(previous.title)}</span>
+                </Link>
+              )}
+              {next && (
+                <Link className="ml-auto" to={next.uri} rel="next">
+                  <span className="underline">{parse(next.title)}</span> →
+                </Link>
+              )}
+        </nav>
+      </article>
     </Layout>
   );
 }

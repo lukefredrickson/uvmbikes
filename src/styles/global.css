@@ -42,7 +42,19 @@
         @apply mb-4
     }
 
-    p {
+    article p {
+        @apply mb-4
+    }
+
+    article a {
+        @apply underline font-semibold
+    }
+
+    .card a {
+        @apply underline font-semibold
+    }
+
+    .card p {
         @apply mb-4
     }
 

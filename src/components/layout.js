@@ -14,7 +14,7 @@ const Layout = ({ children , headerInfo, pageId }) => {
         largeText='Donate to the LUVmyClub fundraiser! Select "UVM Bikes! Co-op" as your designation.'
         smallText="Donate to the LUVmyClub fundraiser!"
         buttonText="Learn More"
-        link="https://www.givecampus.com/schools/UniversityofVermont/luvmyclub-2021"
+        internalLink="/2021/03/09/luvmyclub-2021-fundraiser/"
       />
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&

@@ -62,24 +62,24 @@ const Footer = ({ footerInfo }) => {
                 <div className="flex flex-col text-center md:text-left my-0 w-72 md:w-auto md:my-0 md:px-0 sm:mx-4 md:mx-10">
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Follow UVM Bikes!</h4>
-                        <a href="http://www.facebook.com/UVMBIKES" target="_blank" className={linkStyle}>Facebook</a>
-                        <a href="http://www.instagram.com/uvmbikes" target="_blank" className={linkStyle}>Instagram</a>
+                        <a href="http://www.facebook.com/UVMBIKES" target="_blank" rel="noreferrer" className={linkStyle}>Facebook</a>
+                        <a href="http://www.instagram.com/uvmbikes" target="_blank" rel="noreferrer" className={linkStyle}>Instagram</a>
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Get In Touch</h4>
-                        <a href="mailto:bikesuvm@gmail.com" target="_blank" className={linkStyle}>bikesuvm@gmail.com</a>
-                        <a href="https://list.uvm.edu/cgi-bin/wa?SUBED1=UVMBIKES&A=1" target="_blank" className={linkStyle}>Join the mailing list</a>
+                        <a href="mailto:bikesuvm@gmail.com" target="_blank" rel="noreferrer" className={linkStyle}>bikesuvm@gmail.com</a>
+                        <a href="https://list.uvm.edu/cgi-bin/wa?SUBED1=UVMBIKES&A=1" target="_blank" rel="noreferrer" className={linkStyle}>Join the mailing list</a>
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Get Involved</h4>
-                        <a href="https://forms.gle/192gy5bJeTmi8ETM8" target="_blank" className={linkStyle}>Sign up to volunteer</a>
-                        <a href="https://thelynx.campuslabs.com/engage/organization/bug" target="_blank" className={linkStyle}>Join on UVM Clubs</a>
+                        <a href="https://forms.gle/192gy5bJeTmi8ETM8" target="_blank" rel="noreferrer" className={linkStyle}>Sign up to volunteer</a>
+                        <a href="https://thelynx.campuslabs.com/engage/organization/bug" target="_blank" rel="noreferrer" className={linkStyle}>Join on UVM Clubs</a>
                     </div>
                 </div>
                 <div className="flex flex-col text-center md:text-left w-72 md:w-72 my-0 md:px-0 sm:mx-4 md:mx-10">
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Location</h4>
-                        <a href="https://goo.gl/maps/oLcXR8p8rfjvRGoA9" target="_blank" className={linkStyle}>105 Carrigan Dr Burlington, VT 05401</a>
+                        <a href="https://goo.gl/maps/oLcXR8p8rfjvRGoA9" target="_blank" rel="noreferrer" className={linkStyle}>105 Carrigan Dr Burlington, VT 05401</a>
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Hours</h4>
@@ -90,11 +90,11 @@ const Footer = ({ footerInfo }) => {
                 </div>
             </div>
             <div className="w-full bg-cogs bg-gray-500 flex justify-center items-center py-10">
-                <StaticImage src="../img/favicon.png" width={300} aspectRatio={1} alt="UVM Bikes! Logo"/>
+                <StaticImage src="../img/favicon.png" width={300} aspectRatio={1} placeholder={"tracedSVG"} alt="UVM Bikes! Logo"/>
             </div>
             <div className="flex flex-col justify-center items-center w-full bg-gray-900 h-40 font-light">
                 <span>© {new Date().getFullYear()} UVM Bikes!</span>
-                <span>Developed by&nbsp;<a href="https://github.com/lukefredrickson" target="_blank" className={linkStyle}>Luke Fredrickson</a></span>
+                <span>Developed by&nbsp;<a href="https://github.com/lukefredrickson" target="_blank" rel="noreferrer" className={linkStyle}>Luke Fredrickson</a></span>
             </div>
         </footer>
     )

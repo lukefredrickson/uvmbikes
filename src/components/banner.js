@@ -32,7 +32,7 @@ const Banner = ({ largeText, smallText, buttonText, link, internalLink }) => {
                             </Link>
                             :
                             link &&
-                            <a href={link} target="_blank" className={linkStyle}>
+                            <a href={link} target="_blank" rel="noreferrer" className={linkStyle}>
                                 {buttonText}
                             </a>
                         }

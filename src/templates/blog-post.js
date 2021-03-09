@@ -37,15 +37,13 @@ const BlogPostTemplate = ({
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
             <GatsbyImage
-              className="border-2 border-black shadow-lg"
+              className="border-2 border-black shadow-lg mb-10"
               image={featuredImage.fluid}
               alt={featuredImage.alt}/>
           )}
           <h1 itemProp="headline">{parse(post.title)}</h1>
-
           <p>{post.date}</p>
-
-          
+          <hr className="my-6"></hr>
         </header>
 
         {!!post.content && (

@@ -59,7 +59,7 @@ const CardLayout = ({ cards, size }) => {
     });
 
     return (
-        <div className="grid grid-flow-row justify-start  items-start justify-center md:grid-cols-2 md:-mx-2">
+        <div className="grid grid-flow-row justify-center items-start md:grid-cols-2 md:-mx-2">
             {cardComponents}
         </div>
     );

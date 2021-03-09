@@ -40,7 +40,7 @@ const BlogIndex = ({
             return (
               <Link to={post.uri} key={post.uri} itemProp="url">
                 <article
-                  className="border-2 border-black bg-gray-900 bg-repeat bg-center bg-texture text-gray-50 shadow-lg px-6 py-4 transform-gpu transition-transform ease-in-out hover:-translate-y-0.5"
+                  className="border-2 border-black bg-gray-800 bg-repeat bg-center bg-texture text-white shadow-lg px-6 py-4 transform-gpu transition-transform ease-in-out hover:-translate-y-0.5"
                   itemScope
                   itemType="http://schema.org/Article"
                 >
@@ -48,6 +48,7 @@ const BlogIndex = ({
                     <h2>{parse(title)}</h2>
                     <small>{post.date}</small>
                   </header>
+                  <hr className="my-4"></hr>
                   <section itemProp="description">{parse(post.excerpt)}</section>
                 </article>
               </Link>

@@ -5,7 +5,6 @@ import SimpleMap from "./simple-map"
 
 const CardLayout = ({ cards, size }) => {
     const cardComponents = cards.cards.map(({ card, content, id }) => {
-        console.log(card);
         const {
             externalLink,
             hasLink,
@@ -21,7 +20,6 @@ const CardLayout = ({ cards, size }) => {
             fluid: card?.image?.localFile?.childImageSharp?.gatsbyImageData,
             alt: '',
         }
-        console.log(image);
         const bgColor = backgroundcolor === 'yellow' ? 'bg-yellow-400' :
                         backgroundcolor === 'green' ? 'bg-green-400' :
                         backgroundcolor === 'blue' ? 'bg-blue-400' :
@@ -40,7 +38,6 @@ const CardLayout = ({ cards, size }) => {
             },
             zoom: parseInt(map?.zoom),
         }
-        console.log(mapProps);
         const simpleMap = (
             <SimpleMap
                 center={mapProps.center}

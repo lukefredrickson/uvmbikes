@@ -28,32 +28,35 @@ const BioTemplate = ({
     <Layout headerInfo={headerInfo} pageId={aboutPage.id}>
       <SEO title={post.title} />
       <div className="max-w-6xl">
-        <Link className="text-2xl" to={aboutPage.uri}>
-          ← <span className="underline">{aboutPage.slug}</span>
-        </Link>
         <article
-          className="flex flex-col items-start justify-start lg:flex-row lg:space-x-10"
           itemScope
           itemType="http://schema.org/Article"
         >
-          <header className="w-auto flex-none m-0 mt-10 border-black border-2 shadow-lg">
+        <Link className="text-2xl no-underline" to={aboutPage.uri}>
+          ← <span className="underline">{aboutPage.slug}</span>
+        </Link>
+        <div className="flex flex-col my-10 items-start justify-start lg:flex-row lg:space-x-10">
+          <header className="w-auto flex-none m-0">
             {/* if we have a featured image for this post let's display it */}
             {featuredImage?.fluid && (
               <GatsbyImage
                 image={featuredImage.fluid}
                 alt={featuredImage.alt}
+                className="border border-black shadow-lg my-10"
               />
             )}
           </header>
 
           {!!post.content && (
-            <section itemProp="articleBody">
-              <h1 className="uppercase">{post.bio.name}</h1>
-              <h2 className="font-sans font-normal">{post.bio.position}</h2>
-              <hr></hr>
-              {content}
-            </section>
+          <section itemProp="articleBody">
+            <h1 className="uppercase my-0">{post.bio.name}</h1>
+            <h2 className="font-sans font-normal">{post.bio.position}</h2>
+            <hr className="my-6"></hr>
+            {content}
+          </section>
           )}
+        </div>
+
         </article>
       </div>
       
@@ -78,10 +81,12 @@ export const pageQuery = graphql`query BioById($id: String!) {
           childImageSharp {
             gatsbyImageData(
               layout: CONSTRAINED
-              placeholder: TRACED_SVG
               quality: 100
+              placeholder: TRACED_SVG
               formats: AUTO
-              width: 400
+              transformOptions: {fit: COVER, cropFocus: CENTER}
+              width: 450
+              aspectRatio: 0.9
             )
           }
         }

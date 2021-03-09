@@ -30,7 +30,7 @@ const BlogPostTemplate = ({
         itemScope
         itemType="http://schema.org/Article"
       >
-        <Link className="text-2xl mb-10" to={blogPage.uri}>
+        <Link className="text-2xl mb-10 no-underline" to={blogPage.uri}>
           ← <span className="underline">{blogPage.slug}</span>
         </Link>
         <header className="my-10">
@@ -54,12 +54,12 @@ const BlogPostTemplate = ({
 
         <nav className="py-10 flex w-full justify-between">
               {previous && (
-                <Link className="mr-auto" to={previous.uri} rel="prev">
+                <Link className="mr-auto no-underline" to={previous.uri} rel="prev">
                   ← <span className="underline">{parse(previous.title)}</span>
                 </Link>
               )}
               {next && (
-                <Link className="ml-auto" to={next.uri} rel="next">
+                <Link className="ml-auto no-underline" to={next.uri} rel="next">
                   <span className="underline">{parse(next.title)}</span> →
                 </Link>
               )}

@@ -26,12 +26,24 @@
         @apply text-left
     }
 
-    li {
+    ul li {
         @apply list-disc list-inside ml-4
     }
 
+    ol li {
+        @apply list-decimal list-inside ml-4
+    }
+
+    article ul {
+        @apply mb-4
+    }
+
+    article ol {
+        @apply mb-4
+    }
+
     p {
-        @apply mb-2
+        @apply mb-4
     }
 
     h1 {

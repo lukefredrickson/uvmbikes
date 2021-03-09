@@ -2,18 +2,27 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby"
 
-const Card = ({ header, body, image, link }) => {
+const Card = ({ header, body, image, link, map, bgColor, textColor, bgTexture, size }) => {
   
   return (
-    <div className="transform-gpu transition-transform ease-in-out hover:-translate-y-0.5 max-w-sm bg-repeat bg-center bg-texture 
-    bg-gray-900 text-white border-2 border-black shadow-lg overflow-hidden m-4 pb-4">
-      <Link to={link}>
-    {image?.fluid && (
-          <GatsbyImage
-            image={image.fluid}
-            alt={image.alt}/>
-        )}
-        </Link>
+    <div className={`card ${link && 'transform-gpu transition-transform ease-in-out hover:-translate-y-0.5'} ${size ? size : 'max-w-sm'} bg-repeat bg-center ${bgTexture ? bgTexture : 'bg-texture'} 
+    border-2 border-black shadow-lg overflow-hidden w-auto m-4 pb-4 ${bgColor ? bgColor : 'bg-gray-900'} ${textColor ? textColor : 'text-white'} `}>
+    {link &&
+      <Link to={link || '#'}>
+      {image?.fluid && (
+            <GatsbyImage
+              image={image.fluid}
+              alt={image.alt}/>
+          )}
+          </Link>
+    }
+    {!link && image?.fluid &&
+      <GatsbyImage
+        image={image.fluid}
+        alt={image.alt}/>
+    }
+    {!image?.fluid && map}
+    
     <div className="px-6 py-4">
       <div className="text-xl mb-2">
         {link ? 

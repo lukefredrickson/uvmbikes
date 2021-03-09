@@ -26,7 +26,7 @@ const BlogPostTemplate = ({
       <SEO title={post.title} description={post.excerpt} />
       
       <article
-        className="max-w-6xl"
+        className="max-w-5xl"
         itemScope
         itemType="http://schema.org/Article"
       >

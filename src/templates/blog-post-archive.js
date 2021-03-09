@@ -30,7 +30,7 @@ const BlogIndex = ({
   return (
     <Layout headerInfo={headerInfo} pageId={blogPage.id}>
       <SEO title={blogPage.title} />
-      <div className="max-w-6xl">
+      <div className="max-w-5xl">
         <h1 className="mb-10 text-4xl">Recent Posts</h1>
 
         <div className="flex flex-col space-y-8">

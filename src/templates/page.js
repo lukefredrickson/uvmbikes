@@ -5,6 +5,7 @@ import parse from "html-react-parser"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TeamCards from "../components/team-cards"
+import CardLayout from "../components/card-layout"
 
 const PageTemplate = ({ data: { page } }) => {
 
@@ -13,22 +14,26 @@ const PageTemplate = ({ data: { page } }) => {
   const content = parse(page.content);
   //const content = contentFull.filter(i => i !== '\n\n\n\n');
 
+
   return (
     <Layout headerInfo={page.hero} pageId={page.id}>
       <SEO title={page.title} />
       
 
       <article
-        className="max-w-6xl"
+        className="max-w-5xl"
         itemScope
         itemType="http://schema.org/Article"
       >
-        {!!page.content && (
+        {!!page.content && !page.isFrontPage && (
           <section itemProp="articleBody">
             {content}
           </section>
         )}
       </article>
+      {page.isFrontPage && page.cards && (
+        <CardLayout cards={page.cards} size='max-w-xs sm:max-w-md md:max-w-lg'/>
+      )}
       {isAbout ? <TeamCards/> : ''}
       {isVolunteer &&
         <div className="flex justify-center items-center bg-repeat bg-center bg-texture w-full h-60 my-10 bg-red-400">
@@ -47,6 +52,8 @@ export default PageTemplate
 
 export const pageQuery = graphql`query PageById($id: String!) {
   page: wpPage(id: {eq: $id}) {
+    isPostsPage
+    isFrontPage
     id
     content
     title
@@ -62,6 +69,55 @@ export const pageQuery = graphql`query PageById($id: String!) {
         localFile {
           childImageSharp {
             gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG, quality: 100)
+          }
+        }
+      }
+    }
+    cards {
+      cards {
+        ... on WpPost {
+          content
+          id
+          card {
+            backgroundcolor
+            textcolor
+            useMap
+            isInternalLink
+            isCard
+            hasLink
+            header
+            externalLink {
+              url
+              title
+              target
+            }
+            internalLink {
+              ... on WpPage {
+                uri
+              }
+              ... on WpPost {
+                uri
+              }
+            }
+            map {
+              latitude
+              longitude
+              zoom
+            }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData (
+                  layout: CONSTRAINED
+                  quality: 100
+                  placeholder: TRACED_SVG
+                  formats: AUTO
+                  transformOptions: {fit: COVER, cropFocus: CENTER}
+                  width: 550
+                  aspectRatio: 1.2)
+                }
+              }
+            }
           }
         }
       }

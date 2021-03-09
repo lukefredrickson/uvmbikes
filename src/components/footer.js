@@ -55,7 +55,7 @@ const Footer = ({ footerInfo }) => {
             <div className="flex flex-col justify-center items-center md:items-start md:flex-row w-full bg-gray-900 h-auto md:px-20 py-10 md:py-32">
                 <div className="flex flex-col justify-center items-center md:items-start w-full my-10 md:my-0 sm:mx-4 md:mx-10 md:w-auto">
                     <h1 className="uppercase text-5xl md:text-4xl font-display font-semibold mb-6 md:mb-0 my-0">UVM Bikes!</h1>
-                    <nav className="flex flex-col justify-center items-center md:items-start divide-y-2 border-gray-800 border-2 w-full md:w-auto md:border-none md:divide-y-0">
+                    <nav className="flex flex-col justify-center items-center md:items-start divide-y-2 border-gray-800 border-t-2 border-b-2 w-full md:w-auto md:border-none md:divide-y-0">
                         {navItems}
                     </nav>
                 </div>

@@ -113,7 +113,7 @@ export const pageQuery = graphql`query PageById($id: String!) {
                   placeholder: TRACED_SVG
                   formats: AUTO
                   transformOptions: {fit: COVER, cropFocus: CENTER}
-                  width: 550
+                  width: 552
                   aspectRatio: 1.2)
                 }
               }

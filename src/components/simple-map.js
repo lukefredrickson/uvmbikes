@@ -24,6 +24,8 @@ const AnyReactComponent = () => {
   </div>);
 }
  
+
+
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
@@ -36,14 +38,20 @@ class SimpleMap extends Component {
   };
  
   render() {
+    const options = {
+      styles: [{ stylers: [{ 'visibility': 'on' }] }]
+    }
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: this.props.height, width: this.props.width }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCkzh_DdrLYSdnMVYtInsIYIC8LRjmptxA' }}
+          bootstrapURLKeys={{
+            key: 'AIzaSyCkzh_DdrLYSdnMVYtInsIYIC8LRjmptxA'
+          }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           resetBoundsOnResize={true}
+          options={options}
         >
           <AnyReactComponent
             lat={this.props.center.lat}

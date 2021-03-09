@@ -38,12 +38,11 @@ const CardLayout = ({ cards, size }) => {
             },
             zoom: parseInt(map?.zoom),
         }
-        const simpleMap = (
-            <SimpleMap
+        const simpleMap = useMap &&
+            (<SimpleMap
                 center={mapProps.center}
                 zoom={mapProps.zoom}
-            />
-        )
+            />)
         return (
             <Card
                 key={id}

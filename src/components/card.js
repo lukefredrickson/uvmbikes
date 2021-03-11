@@ -6,7 +6,7 @@ const Card = ({ header, body, image, link, map, bgColor, textColor, bgTexture, s
   
   return (
     <div className={`card ${link && 'transform-gpu transition-transform ease-in-out hover:-translate-y-0.5'} ${size ? size : 'max-w-sm'} bg-repeat bg-center ${bgTexture ? bgTexture : 'bg-texture'} 
-    border-2 border-black shadow-lg overflow-hidden w-auto m-4 pb-4 ${bgColor ? bgColor : 'bg-gray-900'} ${textColor ? textColor : 'text-white'} `}>
+    border-2 border-black shadow-lg overflow-hidden w-auto m-2 md:m-4 pb-4 ${bgColor ? bgColor : 'bg-gray-900'} ${textColor ? textColor : 'text-white'} `}>
     {link &&
       <Link to={link || '#'}>
       {image?.fluid && (

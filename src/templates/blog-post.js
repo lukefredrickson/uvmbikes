@@ -23,7 +23,7 @@ const BlogPostTemplate = ({
 
   return (
     <Layout headerInfo={headerInfo} pageId={blogPage.id}>
-      <SEO title={post.title} description={post.excerpt} />
+      <SEO title={post.seo.title} description={post.excerpt} />
       
       <article
         className="max-w-5xl"
@@ -76,6 +76,10 @@ export const pageQuery = graphql`query BlogPostById($id: String!, $previousPostI
     content
     title
     date(formatString: "MMMM DD, YYYY")
+    seo {
+      metaDesc
+      title
+    }
     featuredImage {
       node {
         altText

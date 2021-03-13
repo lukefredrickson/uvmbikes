@@ -202,6 +202,10 @@ async function getWpData({ graphql, reporter }) {
             title
             isPostsPage
             isFrontPage
+            seo {
+              title
+              metaDesc
+            }
             hero {
               header
               subtitle
@@ -211,7 +215,7 @@ async function getWpData({ graphql, reporter }) {
         }
       }
       # Query all Team Bios
-      allBios: allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "Bio"}}}}}) {
+      allBios: allWpPost(filter: {categories: {nodes: {elemMatch: {name: {eq: "Team Bio"}}}}}) {
         bios: edges {
           bio: node {
             id

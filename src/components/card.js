@@ -27,10 +27,10 @@ const Card = ({ header, body, image, link, map, bgColor, textColor, bgTexture, s
       <div className="text-xl mb-2">
         {link ? 
         <Link to={link}>
-          <h3 className="font-extrabold uppercase">{header}</h3>
+          <h2 className="font-extrabold uppercase">{header}</h2>
         </Link>
          : 
-        <h3 className="font-extrabold uppercase">{header}</h3>
+        <h2 className="font-extrabold uppercase">{header}</h2>
         }
       </div>
       {body}

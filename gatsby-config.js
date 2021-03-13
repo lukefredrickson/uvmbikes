@@ -8,6 +8,11 @@
 
 module.exports = {
 
+
+  siteMetadata: {
+    siteUrl: `https://uvmbikes.w3.uvm.edu`,
+  },
+
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *
@@ -56,6 +61,10 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-sitemap`,
+    // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
+    `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-offline`,
 
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
@@ -70,14 +79,5 @@ module.exports = {
         icon: `content/assets/favicon-32x32.png`,
       },
     },
-
-    // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
-    `gatsby-plugin-react-helmet`,
-
-    /**
-     * this (optional) plugin enables Progressive Web App + Offline functionality
-     * To learn more, visit: https://gatsby.dev/offline
-     */
-    // `gatsby-plugin-offline`,
   ],
 }

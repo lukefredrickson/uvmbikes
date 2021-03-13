@@ -26,7 +26,7 @@ const BioTemplate = ({
 
   return (
     <Layout headerInfo={headerInfo} pageId={aboutPage.id}>
-      <SEO title={post.title} />
+      <SEO title={post.seo.title} description={post.excerpt} />
       <div className="max-w-6xl">
         <article
           itemScope
@@ -73,6 +73,10 @@ export const pageQuery = graphql`query BioById($id: String!) {
     excerpt
     title
     slug
+    seo {
+      metaDesc
+      title
+    }
     bio {
       name
       position

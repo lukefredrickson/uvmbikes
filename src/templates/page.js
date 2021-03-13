@@ -12,12 +12,10 @@ const PageTemplate = ({ data: { page } }) => {
   const isAbout = page.title === 'About';
   const isVolunteer = page.title === 'Volunteer';
   const content = parse(page.content);
-  //const content = contentFull.filter(i => i !== '\n\n\n\n');
-
 
   return (
     <Layout headerInfo={page.hero} pageId={page.id}>
-      <SEO title={page.title} />
+      <SEO title={page.seo.title} meta={page.seo.metaDesc} />
       
 
       <article
@@ -58,6 +56,10 @@ export const pageQuery = graphql`query PageById($id: String!) {
     content
     title
     uri
+    seo {
+      title
+      metaDesc
+    }
     hero {
       header
       subtitle

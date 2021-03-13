@@ -12,7 +12,7 @@ const TeamCards = () => {
   } = useStaticQuery(graphql`
     query TeamBios {
       allBios: allWpPost(
-        filter: {categories: {nodes: {elemMatch: {name: {eq: "Bio"}}}}}
+        filter: {categories: {nodes: {elemMatch: {name: {eq: "Team Bio"}}}}}
         sort: {fields: bio___order}
       ) {
         bios: nodes {

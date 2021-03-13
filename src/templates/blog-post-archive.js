@@ -13,7 +13,7 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout headerInfo={blogPage.hero} pageId={blogPage.id}>
-        <SEO title={blogPage.seo.title} meta={blogPage.seo.metaDesc} />
+        <SEO title={blogPage.seo.title} description={blogPage.seo.metaDesc} />
         <p>
           Uh Oh! No blog posts found.
         </p>

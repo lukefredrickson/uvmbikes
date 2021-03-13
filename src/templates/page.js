@@ -15,7 +15,7 @@ const PageTemplate = ({ data: { page } }) => {
 
   return (
     <Layout headerInfo={page.hero} pageId={page.id}>
-      <SEO title={page.seo.title} meta={page.seo.metaDesc} />
+      <SEO title={page.seo.title} description={page.seo.metaDesc} />
       
 
       <article

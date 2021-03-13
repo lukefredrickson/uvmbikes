@@ -26,7 +26,7 @@ const BioTemplate = ({
 
   return (
     <Layout headerInfo={headerInfo} pageId={aboutPage.id}>
-      <SEO title={post.seo.title} description={post.excerpt} />
+      <SEO title={`${post.seo.title}: ${post.bio.name}`} description={`${post.bio.name}, UVM Bikes! ${post.bio.position} | ${post.excerpt}`} />
       <div className="max-w-6xl">
         <article
           itemScope

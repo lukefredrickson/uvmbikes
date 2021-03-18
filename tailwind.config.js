@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
+    layers: ['components', 'utilities'],
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     options: {
       safelist: [

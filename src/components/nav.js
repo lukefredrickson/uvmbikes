@@ -74,7 +74,10 @@ const Nav = ({ pageId }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="items-center">
-            <Link to="/" className="uppercase text-gray-50 font-display font-semibold text-3xl">UVM Bikes!</Link>
+            <Link to="/" className="uppercase text-gray-50 font-display font-semibold text-3xl 
+                                  hover:text-yellow-400 transition-colors ease-in-out">
+              UVM Bikes!
+            </Link>
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">

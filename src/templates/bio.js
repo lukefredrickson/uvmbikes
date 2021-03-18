@@ -32,9 +32,12 @@ const BioTemplate = ({
           itemScope
           itemType="http://schema.org/Article"
         >
-        <Link className="text-2xl no-underline" to={aboutPage.uri}>
-          ← <span className="underline">{aboutPage.slug}</span>
-        </Link>
+        <div>
+          <Link className="flex w-min text-2xl mb-10 no-underline py-2 pr-4" to={aboutPage.uri}>
+            <div className="flex-none mr-2">←</div>
+            <span className="underline">{aboutPage.slug}</span>
+          </Link>
+        </div>
         <div className="flex flex-col my-10 items-start justify-start lg:flex-row lg:space-x-10">
           <header className="w-auto flex-none m-0">
             {/* if we have a featured image for this post let's display it */}

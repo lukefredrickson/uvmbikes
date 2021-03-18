@@ -38,7 +38,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          '"Roboto Slab"',
           ...defaultTheme.fontFamily.sans,
         ],
       },
@@ -55,7 +54,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      fontWeight: ['hover'],
+    },
   },
   plugins: [],
 }

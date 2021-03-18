@@ -34,6 +34,10 @@
         @apply list-decimal list-inside ml-4
     }
 
+    article section {
+        @apply flex flex-col
+    }
+
     article ul {
         @apply mb-4
     }
@@ -47,7 +51,19 @@
     }
 
     article a {
-        @apply underline font-semibold
+        @apply underline font-semibold hover:text-yellow-500 transition-colors ease-in-out
+    }
+
+    article .wp-block-image {
+        @apply my-8 flex flex-col items-center self-center w-full sm:w-5/6 md:w-4/5 lg:w-3/4
+    }
+
+    article .wp-block-image .gatsby-image-wrapper {
+        @apply border-2 border-black shadow-md w-full !important
+    }
+
+    article figcaption {
+        @apply mt-4 text-sm self-center
     }
 
     .card a {
@@ -56,6 +72,10 @@
 
     .card p {
         @apply mb-4
+    }
+
+    footer a {
+        @apply hover:text-yellow-400 transition-colors ease-in-out 
     }
 
     h1 {

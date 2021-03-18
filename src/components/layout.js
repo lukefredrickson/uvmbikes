@@ -4,18 +4,19 @@ import Header from "./header"
 import Footer from "./footer"
 import Banner from "./banner"
 
+const showBanner = false;
+
 const Layout = ({ children , headerInfo, pageId }) => {
   
   return (
     <div>
       <Nav pageId={pageId}/>
-      <Banner 
-
+      {showBanner && <Banner 
         largeText='Donate to the LUVmyClub fundraiser! Select "UVM Bikes! Co-op" as your designation.'
         smallText="Donate to the LUVmyClub fundraiser!"
         buttonText="Learn More"
         internalLink="/2021/03/09/luvmyclub-2021-fundraiser/"
-      />
+      />}
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&
       <main>

@@ -83,9 +83,8 @@ const Footer = ({ footerInfo }) => {
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Hours</h4>
-                        <p className="uppercase m-0 font-normal">Due to COVID-19, we are currently closed to the public.</p>
-                        <p className="m-0 font-light">Regular: <span className="line-through">Mon-Fri, 10am-3pm</span></p>
-                        <p className="m-0 font-light">Summer: <span className="line-through">Mon, 10am-3pm</span></p>
+                        <p className="m-0 font-light">Regular: <span className="">Mon-Fri, 10am-3pm</span></p>
+                        <p className="m-0 font-light">Summer: <span className="">Mon, 10am-3pm</span></p>
                     </div>
                 </div>
             </div>

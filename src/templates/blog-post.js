@@ -23,7 +23,7 @@ const BlogPostTemplate = ({
 
   return (
     <Layout headerInfo={headerInfo} pageId={blogPage.id}>
-      <SEO title={post.seo.title} description={post.excerpt} />
+      <SEO title={post.seo.title} description={parse(post.excerpt)} />
       
       <article
         className="max-w-5xl"

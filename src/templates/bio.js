@@ -15,8 +15,7 @@ const BioTemplate = ({
     alt: post.featuredImage?.node?.alt || ``,
   }
 
-  const contentFull = parse(post.content);
-  const content = contentFull.filter(i => i !== '\n' && i !== '\n\n\n\n' && i.type !== 'subtitle');
+  const content = parse(post.content);
 
   const headerInfo = {
       header: 'THE TEAM',
@@ -26,7 +25,7 @@ const BioTemplate = ({
 
   return (
     <Layout headerInfo={headerInfo} pageId={aboutPage.id}>
-      <SEO title={`${post.seo.title}: ${post.bio.name}`} description={`${post.bio.name}, UVM Bikes! ${post.bio.position} | ${post.excerpt}`} />
+      <SEO title={`${post.seo.title}: ${post.bio.name}`} description={`${post.bio.name}, UVM Bikes! ${post.bio.position} | ${parse(post.excerpt)}`} />
       <div className="max-w-6xl">
         <article
           itemScope

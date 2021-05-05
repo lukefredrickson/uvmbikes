@@ -4,7 +4,7 @@ import Header from "./header"
 import Footer from "./footer"
 import Banner from "./banner"
 
-const showBanner = false;
+const showBanner = true;
 
 const Layout = ({ children , headerInfo, pageId }) => {
   
@@ -12,10 +12,10 @@ const Layout = ({ children , headerInfo, pageId }) => {
     <div>
       <Nav pageId={pageId}/>
       {showBanner && <Banner 
-        largeText='Donate to the LUVmyClub fundraiser! Select "UVM Bikes! Co-op" as your designation.'
-        smallText="Donate to the LUVmyClub fundraiser!"
-        buttonText="Learn More"
-        internalLink="/2021/03/09/luvmyclub-2021-fundraiser/"
+        largeText='UVM SGA RSO Joint Statement Condemning UVM’s Handling of Sexual Misconduct'
+        smallText='UVM SGA RSO Joint Statement'
+        buttonText='uvmclubs.com'
+        link="https://www.uvmclubs.com"
       />}
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&

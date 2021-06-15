@@ -28,20 +28,21 @@ const PageTemplate = ({ data: { page } }) => {
             {content}
           </section>
         )}
-      </article>
-      {page.isFrontPage && page.cards && (
-        <CardLayout cards={page.cards} size='max-w-xs sm:max-w-md md:max-w-lg'/>
-      )}
-      {isAbout ? <TeamCards/> : ''}
       {isVolunteer &&
         <div className="flex justify-center items-center bg-repeat bg-center bg-texture w-full h-60 my-10 bg-red-400">
           <div className="transform-gpu transition-transform ease-in-out hover:-translate-y-0.5">
-            <a href="https://forms.gle/192gy5bJeTmi8ETM8" className="font-bold text-3xl bg-white bg-repeat bg-center bg-texture-white p-4 shadow-lg border-2 border-black">
+            <a href="https://forms.gle/192gy5bJeTmi8ETM8" className="font-bold text-xl sm:text-3xl bg-white bg-repeat bg-center bg-texture-white p-4 shadow-lg border-2 border-black">
                 Sign up to volunteer
             </a>
           </div>
         </div>
       }
+      </article>
+      {page.isFrontPage && page.cards && (
+        <CardLayout cards={page.cards} size='max-w-xs sm:max-w-md md:max-w-lg'/>
+      )}
+      {isAbout ? <TeamCards/> : ''}
+      
     </Layout>
   );
 }

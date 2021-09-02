@@ -73,7 +73,7 @@ const Footer = ({ footerInfo }) => {
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Get Involved</h4>
                         <a href="https://forms.gle/192gy5bJeTmi8ETM8" target="_blank" rel="noreferrer" className={linkStyle}>Sign up to volunteer</a>
-                        <a href="https://thelynx.campuslabs.com/engage/organization/bug" target="_blank" rel="noreferrer" className={linkStyle}>Join on UVM Clubs</a>
+                        <a href="https://thelynx.campuslabs.com/engage/organization/uvmbikes" target="_blank" rel="noreferrer" className={linkStyle}>Join on UVM Clubs</a>
                     </div>
                 </div>
                 <div className="flex flex-col text-center md:text-left w-72 md:w-72 my-0 md:px-0 sm:mx-4 md:mx-10">

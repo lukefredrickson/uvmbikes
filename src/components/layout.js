@@ -12,10 +12,10 @@ const Layout = ({ children , headerInfo, pageId }) => {
     <div>
       <Nav pageId={pageId}/>
       {showBanner && <Banner 
-        largeText='UVM SGA RSO Joint Statement Condemning UVM’s Handling of Sexual Misconduct'
-        smallText='UVM SGA RSO Joint Statement'
-        buttonText='uvmclubs.com'
-        link="https://www.uvmclubs.com"
+        largeText='World Ride Movie Night | Saturday, Dec 4th, 7pm in the Davis Center Grand Maple Ballroom'
+        smallText='World Ride Movie Night'
+        buttonText='Get Tickets'
+        link="https://secure.givelively.org/event/world-ride/world-ride-movie-night-uvm"
       />}
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&

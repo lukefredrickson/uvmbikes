@@ -12,10 +12,10 @@ const Layout = ({ children , headerInfo, pageId }) => {
     <div>
       <Nav pageId={pageId}/>
       {showBanner && <Banner 
-        largeText='World Ride Movie Night | Saturday, Dec 4th, 7pm in the Davis Center Grand Maple Ballroom'
-        smallText='World Ride Movie Night'
-        buttonText='Get Tickets'
-        link="https://secure.givelively.org/event/world-ride/world-ride-movie-night-uvm"
+        largeText='UVM Bikes! has moved locations to 86 South Williams St.'
+        smallText='UVM Bikes! has moved locations'
+        buttonText='Get Directions'
+        link="https://g.page/uvm-bikes?share"
       />}
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&

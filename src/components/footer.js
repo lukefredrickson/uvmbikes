@@ -79,7 +79,7 @@ const Footer = ({ footerInfo }) => {
                 <div className="flex flex-col text-center md:text-left w-72 md:w-72 my-0 md:px-0 sm:mx-4 md:mx-10">
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Location</h4>
-                        <a href="https://g.page/uvm-bikes?share" target="_blank" rel="noreferrer" className={linkStyle}>105 Carrigan Dr Burlington, VT 05405</a>
+                        <a href="https://g.page/uvm-bikes?share" target="_blank" rel="noreferrer" className={linkStyle}>86 S Williams St, Burlington, VT 05405</a>
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Hours</h4>

@@ -12,10 +12,10 @@ const Layout = ({ children , headerInfo, pageId }) => {
     <div>
       <Nav pageId={pageId}/>
       {showBanner && <Banner 
-        largeText='UVM SGA RSO Joint Statement Condemning UVM’s Handling of Sexual Misconduct'
-        smallText='UVM SGA RSO Joint Statement'
-        buttonText='uvmclubs.com'
-        link="https://www.uvmclubs.com"
+        largeText='UVM Bikes! has moved locations to 86 South Williams St.'
+        smallText='UVM Bikes! has moved locations'
+        buttonText='Get Directions'
+        link="https://g.page/uvm-bikes?share"
       />}
       <Header headerInfo={headerInfo}/>
       {pageId !== "404" &&

@@ -84,7 +84,7 @@ const Footer = ({ footerInfo }) => {
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Hours</h4>
                         <p className="m-0 font-light">Regular: <span className="">Mon-Fri, 10am-3pm</span></p>
-                        <p className="m-0 font-light">Summer: <span className="">Fri, 10am-3pm</span></p>
+                        <p className="m-0 font-light">Summer: <span className=""><a href="https://g.page/uvm-bikes?share" target="_blank" rel="noreferrer" className={linkStyle}>See Google Maps Hours</a></span></p>
                     </div>
                 </div>
             </div>

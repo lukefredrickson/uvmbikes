@@ -83,9 +83,13 @@ const Footer = ({ footerInfo }) => {
                     </div>
                     <div className="flex flex-col mb-5">
                         <h4 className="font-extrabold uppercase m-0">Hours</h4>
+                        <p className="m-0 font-light">Closed until further notice.</p>
+                        <p className="m-0 font-light"><a href="https://g.page/uvm-bikes?share" target="_blank" rel="noreferrer" className={linkStyle}>See Google Maps Hours</a></p>
+                        {/*
                         <p className="m-0 font-light">Regular: <span className="">Mon-Fri, 10am-3pm</span></p>
                         <p className="m-0 font-light">Summer: <span className=""><a href="https://g.page/uvm-bikes?share" target="_blank" rel="noreferrer" className={linkStyle}>See Google Maps Hours</a></span></p>
-                    </div>
+                        */}
+                      </div>
                 </div>
             </div>
             <div className="w-full bg-cogs bg-gray-500 flex justify-center items-center py-10">

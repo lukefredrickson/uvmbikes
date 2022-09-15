@@ -12,8 +12,8 @@ const Layout = ({ children , headerInfo, pageId }) => {
     <div>
       <Nav pageId={pageId}/>
       {showBanner && <Banner 
-        largeText='UVM Bikes! has moved locations to 86 South Williams St.'
-        smallText='UVM Bikes! has moved locations'
+        largeText='We are temporarily closed, stay tuned for more information.'
+        smallText='We are temporarily closed.'
         buttonText='Get Directions'
         link="https://g.page/uvm-bikes?share"
       />}
